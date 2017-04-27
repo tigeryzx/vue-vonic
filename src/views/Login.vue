@@ -1,8 +1,8 @@
 <template>
     <div class="page">
         <div class="page-content padding-top">
-            <von-input type="text" v-model="username" placeholder="用户名" label="用户名"></von-input>
-            <von-input type="password" v-model="password" placeholder="密码" label="密码" style="margin-bottom: 5px;"></von-input>
+            <von-input type="text" v-model="loginInput.username" placeholder="用户名" label="用户名" required></von-input>
+            <von-input type="password" v-model="loginInput.password" placeholder="密码" label="密码" required style="margin-bottom: 5px;"></von-input>
 
             <div class="padding">
                 <button class="button button-positive button-block" @click="login">登录</button>
@@ -17,14 +17,20 @@
     export default {
         data() {
             return {
-                username: '',
-                password: ''
+                loginInput: {
+                    username: '',
+                    password: ''
+                }
             }
         },
         methods: {
-            ...mapActions({
-                login: types.A_LOGIN_IN
-            })
+            login() {
+                this.$store.dispatch(types.A_LOGIN_IN, this.loginInput).then(result => {
+                    if (result) {
+                        this.$router.forward({ path: '/Index' });
+                    }
+                })
+            }
         }
     }
 

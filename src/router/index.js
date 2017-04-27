@@ -6,6 +6,7 @@ const routes = [
   { path: '/', component: Login },
   { path: '/about', component: About },
   { path: '/login', component: Login },
+  { path: '/Index', component: Index },
 ]
 
 export default routes

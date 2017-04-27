@@ -5,8 +5,8 @@ import axios from 'axios'
 // axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 
 const ResourceStore = axios.create({
-    baseURL: 'http://localhost:4635/api/',
-    timeout: 2500
+    baseURL: 'http://localhost:3651/api/',
+    timeout: 5000
 })
 
 //添加一个请求拦截器

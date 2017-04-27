@@ -28,7 +28,7 @@
   export default {
     computed: {
       ...mapState({
-        theme: state => state.app.theme
+        theme: state => state.theme
       })
     },
     methods: {
