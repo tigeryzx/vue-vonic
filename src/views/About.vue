@@ -1,9 +1,9 @@
 <template>
   <div class="page has-navbar" v-nav="{ title: 'About', showBackButton: true, onBackButtonClick: back }">
     <div class="page-content text-center">
-      <h2 class="padding" @click="showToast">Nothing here.</h2>
+      <h2 class="padding" @click="showAction">Nothing here.</h2>
 
-      <md-button class="button button-balanced button-block" @click="showToast">
+      <!--<md-button class="button button-balanced button-block" @click="showToast">
         Show toast...
       </md-button>
 
@@ -14,12 +14,27 @@
       <my-button class="button button-balanced button-block" @click="showToast">
         Show MY toast...
       </my-button>
+
+      <my-button class="button button-balanced button-block" @click="login">
+        Login...
+      </my-button>-->
     </div>
   </div>
 </template>
 <script>
+  import { mapActions, mapState } from 'Vuex'
+  import * as types from '../store/types'
+
   export default {
+    computed: {
+      ...mapState({
+        theme: state => state.app.theme
+      })
+    },
     methods: {
+      ...mapActions({
+        login: types.A_LOGIN_IN
+      }),
       back() {
         $router.back('/')
       },
@@ -28,8 +43,7 @@
       },
       showAction() {
         $actionSheet.show({
-          // 支持三种主题样式 ios/android/weixin
-          theme: 'ios',
+          theme: this.theme,
           title: '标题',
           buttons: {
             'Action - 1': () => {
