@@ -1,5 +1,5 @@
 <template>
-  <div class="page has-navbar" v-nav="{ title: 'About', showBackButton: true, onBackButtonClick: back }">
+  <div class="page has-navbar" v-nav="{ title: 'About', showBackButton: true }">
     <div class="page-content text-center">
       <h2 class="padding" @click="showAction">Nothing here.</h2>
 
@@ -35,9 +35,6 @@
       ...mapActions({
         login: types.A_LOGIN_IN
       }),
-      back() {
-        $router.back('/')
-      },
       showToast() {
         $toast.show("button clicked.")
       },

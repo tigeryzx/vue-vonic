@@ -26,6 +26,6 @@
   }
   
   .page.has-navbar .page-content {
-    padding-top: 100px;
+    padding-top: 44px;
   }
 </style>

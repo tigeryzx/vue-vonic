@@ -10,7 +10,7 @@ const state = {
 
 const mutations = {
     [types.M_LOGIN_SET_USER](state, payload) {
-        state.user = payload
+        state.user = payload;
     },
     [types.M_LOGIN_CLEAR_USER](state) {
         state.user = {};
