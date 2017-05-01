@@ -40,7 +40,7 @@ const actions = {
                     })
                 }
                 resolve(data.isSuccess);
-            })
+            });
         })
 
     }

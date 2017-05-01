@@ -1,19 +1,11 @@
 <template>
-    <div class="page has-navbar" v-nav="{ title: '收藏列表',showBackButton: true }">
+    <div class="page has-navbar" v-nav="{ 
+        title: '收藏列表',
+        showBackButton: true ,
+        showMenuButton:true ,
+        onMenuButtonClick: showAction}">
         <div class="page-content">
             <div>
-                <div>
-                    <div class="item item-divider cssAppendBtn" @click="toggleAddPlan">
-                        <i class="ion-plus-round"></i> 添加收藏
-                    </div>
-                    <transition name="von-accordion">
-                        <div v-if="showAddPlan">
-                            <von-input type="text" v-model="favName" placeholder="收藏名称"></von-input>
-                            <button class="button button-positive button-block">保存</button>
-                        </div>
-                    </transition>
-                </div>
-
                 <list class="list-ios">
                     <item class="item-icon-right" v-for="(item,index) in favList" :key="index">
                         Item - {{item}}
@@ -38,7 +30,14 @@
     }
 </style>
 <script>
+    import { mapState } from 'Vuex'
+
     export default {
+        computed: {
+            ...mapState({
+                theme: state => state.theme
+            })
+        },
         data() {
             return {
                 showAddPlan: false,
@@ -51,13 +50,27 @@
         methods: {
             toggleAddPlan() {
                 this.showAddPlan = !this.showAddPlan;
+            },
+            toggleSidebar() {
+                this.sidebar.toggle()
+            },
+            showAction() {
+                $actionSheet.show({
+                    theme: this.theme,
+                    title: '收藏管理',
+                    buttons: {
+                        '添加收藏': () => {
+                            this.$router.forward({ path: '/favSave', query: { type: 'add' } });
+                        }
+                    }
+                })
             }
         },
         mounted() {
             for (let i = 1; i <= 20; i++) {
                 this.favList.push(i)
             }
-        },
+        }
     }
 
 </script>

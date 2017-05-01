@@ -25,12 +25,12 @@
         },
         methods: {
             login() {
-                this.$router.replace({ path: '/home' });
-                // this.$store.dispatch(types.A_LOGIN_IN, this.loginInput).then(result => {
-                //     if (result) {
-                //         this.$router.forward({ path: '/Index' });
-                //     }
-                // })
+                // this.$router.replace({ path: '/home' });
+                this.$store.dispatch(types.A_LOGIN_IN, this.loginInput).then(result => {
+                    if (result) {
+                        this.$router.forward({ path: '/home' });
+                    }
+                })
             }
         }
     }

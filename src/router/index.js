@@ -6,6 +6,7 @@ import ContentList from '../views/ContentList.vue'
 import Content from '../views/Content.vue'
 import FavList from '../views/FavList.vue'
 import Setting from '../views/Setting.vue'
+import FavSave from '../views/FavSave.vue'
 
 const routes = [
   { path: '/', component: Login },
@@ -14,6 +15,7 @@ const routes = [
   { path: '/contentList', component: ContentList },
   { path: '/content', component: Content },
   { path: '/favList', component: FavList },
+  { path: '/favSave', component: FavSave },
   { path: '/setting', component: Setting },
   { path: '/about', component: About },
   { path: '/Index', component: Index },

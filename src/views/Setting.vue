@@ -2,7 +2,7 @@
     <div class="page has-navbar" v-nav="{ title: '应用设置',showBackButton: true }">
         <div class="page-content">
             <div class="item item-divider">
-                应用主题 {{themeIndex}}:
+                应用主题:
             </div>
             <von-radio :options="themeList" v-model="selTheme"></von-radio>
             <button class="button button-positive button-block" @click="setTheme">保存设置</button>
@@ -30,10 +30,12 @@
                 this.$store.commit(types.M_APP_SET_THEME, this.selTheme);
             }
         },
+        mounted () {
+            this.selTheme = this.themeIndex;
+        },
         data() {
-            var v = this.themeIndex;
             return {
-                selTheme: v
+                selTheme: 0
             }
         }
     }

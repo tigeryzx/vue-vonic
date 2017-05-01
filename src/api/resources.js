@@ -16,18 +16,21 @@ ResourceStore.interceptors.request.use(function (config) {
     return config;
 }, function (error) {
     //当出现请求错误是做一些事
-    $loading.hide()
+    $toast.show('请求失败!')
     return Promise.reject(error);
 });
 
 //添加一个返回拦截器
 ResourceStore.interceptors.response.use(function (response) {
     //对返回的数据进行一些处理
-    $loading.hide()
+    $loading.hide();
     return response;
 }, function (error) {
-    //对返回的错误进行一些处理
-    $loading.hide()
+    if (error.response.data != null && error.response.data.IsValidateFailed) {
+        $toast.show(error.response.data.Msg);
+    }else{
+        $toast.show('响应失败!');
+    }
     return Promise.reject(error);
 });
 
